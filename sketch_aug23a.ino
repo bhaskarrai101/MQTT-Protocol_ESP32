@@ -4,15 +4,15 @@
 #include <PubSubClient.h>
 
 // WiFi
-const char *ssid = "Z71"; // Enter your WiFi name
-const char *password = "1234qwer";  // Enter WiFi password
+const char *ssid = "WIFI name"; // Enter your WiFi name
+const char *password = "password";  // Enter WiFi password
 
 // MQTT Broker
-const char *mqtt_broker = "3.109.167.1";
-const char *topic = "6125e25b5f69fb0021fd1254";
+const char *mqtt_broker = "Broker_IP";
+const char *topic = "TOPIC_NAME";
 
-const char *mqtt_username = "pranjal";
-const char *mqtt_password = "pranjal123";
+const char *mqtt_username = "username";
+const char *mqtt_password = "password";
 const int mqtt_port = 1883;
 const char *lotid="6125e25b5f69fb0021fd1254";
 char json_char_array[100] = "";
@@ -38,7 +38,7 @@ void setup() {
      client_id += String(WiFi.macAddress());
      Serial.printf("The client %s connects to the public mqtt broker\n", client_id.c_str());
      if (client.connect(client_id.c_str(), mqtt_username, mqtt_password)) {
-         Serial.println("Public emqx mqtt broker connected");
+         Serial.println("Public mqtt broker connected");
      } else {
          Serial.print("failed with state ");
          Serial.print(client.state());
