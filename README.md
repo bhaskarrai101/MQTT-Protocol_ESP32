@@ -1,32 +1,31 @@
 # MQTT-Protocol_ESP32
 code for pubsub client for ESP32 Arduino Ide 
 
-#1.Installations
-###1.Install Ardiuno ide
-###2. In Ardiuno Ide open file, then  goto preferences, then add https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json in Addition noards manager url, click ok.\
-###3.Goto Main menu and select tools, then goto Manage libraries install ESP32 by Espressif Systems“,PubSubClient lib.
-4.### Write the code given below.
-Esp32 PubSubClient program
+# 1.Installations
+### 1.Install Ardiuno ide
+### 2. In Ardiuno Ide open file, then  goto preferences, then add https://dl.espressif.com/dl/package_esp32_index.json,        http://arduino.esp8266.com/stable/package_esp8266com_index.json in Addition noards manager url, click ok.\
+### 3.Goto Main menu and select tools, then goto Manage libraries install ESP32 by Espressif Systems“,PubSubClient lib.
+### 4. Write the code given below.
 
 
-#2.ERRORS
-###1. if arduino put a error such as "Cannot open /dev/ttyUSB0:Permission denied" than you have to provide necessary permissionas follows:
+# 2.ERRORS
+### 1. if arduino put a error such as "Cannot open /dev/ttyUSB0:Permission denied" than you have to provide necessary permissionas follows:
 	1. open cmd line type command---sudo su
 					 cd /
 					 cd dev
 					 chown username ttyUSB0
-###2. if arduino put error such as "No directory found name PubSubClient" than follow the steps:
+### 2. if arduino put error such as "No directory found name PubSubClient" than follow the steps:
 	1. Open Arduio ide
 	2. Goto sketch
 	3. Include Liberary
 	4. Manage Libraries
 	5. In Search type "PubSubClient" 
 	6. Select one lib and press INSTALL
-3. if you are unable to upload the code than press the EN botton on ESP32 while uploading the code
+### 3. if you are unable to upload the code than press the EN botton on ESP32 while uploading the code
 
 
 
-#3. Code for PubSubCLient
+# 3. Code for PubSubCLient
 
 ~ First, we will import the WiFi and PubSubClient libraries. The ESP8266WiFi library can connect ESP32 to Wi-Fi networks, and the PubSubClient library can connect ESP32 to the MQTT server to publish messages and subscribe to topics.
 #include <WiFi.h>
@@ -50,25 +49,25 @@ Esp32 PubSubClient program
 #// connecting to a WiFi network
 #WiFi.begin(ssid, password);
 #while (WiFi.status() != WL_CONNECTED) {
-#    delay(500);
-#    Serial.println("Connecting to WiFi..");
-#}
+`#    delay(500);
+`#    Serial.println("Connecting to WiFi..");
+`#}
 
 ~ Use PubSubClient to connect to the public MQTT Broker.
 #client.setServer(mqtt_broker, mqtt_port);
 #client.setCallback(callback);
 #while (!client.connected()) {
-#    String client_id = "esp32-client-";
-#    client_id += String(WiFi.macAddress());
-#    Serial.printf("The client %s connects to the public mqtt broker\n", client_id.c_str());
-#    if (client.connect(client_id.c_str(), mqtt_username, mqtt_password)) {
-#        Serial.println("Public emqx mqtt broker connected");
-#    } else {
-#        Serial.print("failed with state ");
-#        Serial.print(client.state());
-#        delay(2000);
-#    }
-#}
+`#    String client_id = "esp32-client-";
+`#    client_id += String(WiFi.macAddress());
+`#    Serial.printf("The client %s connects to the public mqtt broker\n", client_id.c_str());
+`#    if (client.connect(client_id.c_str(), mqtt_username, mqtt_password)) {
+`#        Serial.println("Public emqx mqtt broker connected");
+`#    } else {
+`#        Serial.print("failed with state ");
+`#        Serial.print(client.state());
+`#        delay(2000);
+`#    }
+`#}
 
 ~ After the MQTT server is successfully connected, ESP32 will publish messages to the MQTT server of esp/test and subscribe to the topic messages of 
 
@@ -78,15 +77,15 @@ Esp32 PubSubClient program
 
 ~ Set the callback function to print the topic name to the serial port and print the message received from the esp32/test topic.
 #void callback(char *topic, byte *payload, unsigned int length) {
-#    Serial.print("Message arrived in topic: ");
-#    Serial.println(topic);
-#    Serial.print("Message:");
-#    for (int i = 0; i < length; i++) {
-#        Serial.print((char) payload[i]);
-#    }
-#    Serial.println();
-#    Serial.println("-----------------------");
-#}
+`#    Serial.print("Message arrived in topic: ");
+`#    Serial.println(topic);
+`#    Serial.print("Message:");
+`#    for (int i = 0; i < length; i++) {
+`#        Serial.print((char) payload[i]);
+`#    }
+`#    Serial.println();
+`#    Serial.println("-----------------------");
+`#}
 
 
 
