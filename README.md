@@ -2,8 +2,8 @@
 code for pubsub client for ESP32 Arduino Ide 
 
 # 1.Installations
-### 1.Install Ardiuno ide
-### 2. In Ardiuno Ide open file, then  goto preferences, then add https://dl.espressif.com/dl/package_esp32_index.json,        http://arduino.esp8266.com/stable/package_esp8266com_index.json in Addition noards manager url, click ok.\
+### 1.Install Arduino ide
+### 2. In Arduino Ide open file, then  goto preferences, then add https://dl.espressif.com/dl/package_esp32_index.json,        http://arduino.esp8266.com/stable/package_esp8266com_index.json in Addition noards manager url, click ok.\
 ### 3.Goto Main menu and select tools, then goto Manage libraries install ESP32 by Espressif Systems“,PubSubClient lib.
 ### 4. Write the code given below.
 
@@ -28,10 +28,12 @@ code for pubsub client for ESP32 Arduino Ide
 # 3. Code for PubSubCLient
 
 ~ First, we will import the WiFi and PubSubClient libraries. The ESP8266WiFi library can connect ESP32 to Wi-Fi networks, and the PubSubClient library can connect ESP32 to the MQTT server to publish messages and subscribe to topics.
+
 #include <WiFi.h>
 #include <PubSubClient.h>
 
 ~ Set the Wi-Fi name and password, as well as the MQTT server connection address and port, and set the topic to "esp32/test".
+
 #// WiFi
 #const char *ssid = "mousse"; // Enter your WiFi name
 #const char *password = "qweqweqwe";  // Enter WiFi password
@@ -44,6 +46,7 @@ code for pubsub client for ESP32 Arduino Ide
 #const int mqtt_port = 1883;
 	
 ~ Open a serial connection to output the results of the program and connect to the Wi-Fi network.
+
 #// Set software serial baud to 115200;
 #Serial.begin(115200);
 #// connecting to a WiFi network
@@ -54,6 +57,7 @@ code for pubsub client for ESP32 Arduino Ide
 `#}
 
 ~ Use PubSubClient to connect to the public MQTT Broker.
+
 #client.setServer(mqtt_broker, mqtt_port);
 #client.setCallback(callback);
 #while (!client.connected()) {
@@ -76,6 +80,7 @@ code for pubsub client for ESP32 Arduino Ide
 #client.subscribe(topic);
 
 ~ Set the callback function to print the topic name to the serial port and print the message received from the esp32/test topic.
+
 #void callback(char *topic, byte *payload, unsigned int length) {
 `#    Serial.print("Message arrived in topic: ");
 `#    Serial.println(topic);
