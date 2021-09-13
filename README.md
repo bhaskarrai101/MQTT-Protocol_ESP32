@@ -1,17 +1,21 @@
 # MQTT-Protocol_ESP32
 code for pubsub client for ESP32 Arduino Ide 
 
-installations
-1.Install Ardiuno ide
-2. In Ardiuno Ide open file, then  goto preferences, then add https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json in Addition noards manager url, click ok.\
-3.  
+#1.Installations
+###1.Install Ardiuno ide
+###2. In Ardiuno Ide open file, then  goto preferences, then add https://dl.espressif.com/dl/package_esp32_index.json, http://arduino.esp8266.com/stable/package_esp8266com_index.json in Addition noards manager url, click ok.\
+###3.Goto Main menu and select tools, then goto Manage libraries install ESP32 by Espressif Systems“,PubSubClient lib.
+4.### Write the code given below.
 Esp32 PubSubClient program
-1. if arduino put a error such as "Cannot open /dev/ttyUSB0:Permission denied" than you have to provide necessary permissionas follows:
+
+
+#2.ERRORS
+###1. if arduino put a error such as "Cannot open /dev/ttyUSB0:Permission denied" than you have to provide necessary permissionas follows:
 	1. open cmd line type command---sudo su
 					 cd /
 					 cd dev
 					 chown username ttyUSB0
-2. if arduino put error such as "No directory found name PubSubClient" than follow the steps:
+###2. if arduino put error such as "No directory found name PubSubClient" than follow the steps:
 	1. Open Arduio ide
 	2. Goto sketch
 	3. Include Liberary
@@ -20,7 +24,9 @@ Esp32 PubSubClient program
 	6. Select one lib and press INSTALL
 3. if you are unable to upload the code than press the EN botton on ESP32 while uploading the code
 
-4. Code for PubSubCLient
+
+
+#3. Code for PubSubCLient
 
 ~ First, we will import the WiFi and PubSubClient libraries. The ESP8266WiFi library can connect ESP32 to Wi-Fi networks, and the PubSubClient library can connect ESP32 to the MQTT server to publish messages and subscribe to topics.
 #include <WiFi.h>
